@@ -167,7 +167,7 @@ if run:
         st.session_state["cache"] = tempfile.mkdtemp(prefix="promo_cache_")
     try:
         llm = LLM(provider, model, api_key=key_box or None, cache_dir=st.session_state["cache"])
-        llm._api_key() if provider != "mock" else None
+        _ = llm._api_key() if provider != "mock" else None
     except LLMError as e:
         st.error(str(e))
         st.stop()
